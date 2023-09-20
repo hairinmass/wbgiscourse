@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>My web for Xin Ji</title>
+<meta name="viewport" content="initial-scale=1,width=device-width">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: sans-serif;
+            background-color: #b9a9b0;
+        }
+        #map { 
+            position: absolute; 
+            width: 600px;
+            height: 600px;
+            /* top: 50%;
+            left: 50%; */
+            margin-top: 50px;
+            margin-left: 20px;
+            border-radius: 30px;
+        }
+        #fly {
+            position: absolute;
+            width: 60px;
+            height: 40px;
+            font-size: 15px;
+            font-style: bold;
+            font-style: italic;
+            z-index: 100;
+            right: 75px;
+            background-color: #f2eeed;
+            border-radius: 8px;
+            border-width: 0;
+            cursor: pointer;
+        }
+        #reset {
+            position: absolute;
+            width: 60px;
+            height: 40px;
+            font-size: 15px;
+            font-style: bold;
+            font-style: italic;
+            z-index: 100;
+            right: 10px;
+            background-color: #f2eeed;
+            border-radius: 8px;
+            border-width: 0;
+            cursor: pointer;
+        }
+        #fly:hover {
+            background-color: #8d8989;
+        }
+        #reset:hover {
+            background-color: #8d8989;
+        }
+        #menu {
+            position: absolute;
+            background: #efefef;
+            padding: 10px;
+            font-family: 'Open Sans', sans-serif;
+            margin-left: 60px;
+            border-radius: 8px;
+        }
+        #btn {
+            position: absolute;
+            height: 20px;
+            width: 50px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            font-style: italic;
+            margin-left: 530px;
+            border-radius: 8px;
+        }
+        .head {
+            text-align: center;
+            font-size: 30px;
+        }
+        .img_style {
+            width: 250px;
+            height: 150px;
+            padding: 5px;
+            border-radius: 30px;
+        }
+        .img_div {
+            position: absolute;
+            z-index: 100;
+            right: 15px;
+            top: 100px;
+            border-radius: 30px;
+        }
+        .text {
+            right: 15px;
+            top: 450px;
+            position: absolute;
+            z-index: 100;
+            width: 780px;
+        }
+        #message {
+            animation: fade 3s ease-in-out;
+            display: none; 
+            text-align: center; 
+            font-size: 25px;
+        }
+        #address {
+            animation: fade 3s ease-in-out;
+            display: none; 
+            text-align: center; 
+            font-size: 25px;
+        }
+        @keyframes fade {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="head" id="title">
+        <font face="隶书">
+            记录家乡印象——河北·辛集
+        </font>
+    </h1>
+    <p id="message">"Talk is cheap, show me your code."</p>
+    <p id="address">hairinmass.github.io&nbsp&nbsp or &nbsp&nbsphttps://github.com/hairinmass/hairinmass.github.io</p>
+    <hr>
+    <div id="menu">
+        <input id="satellite-streets-v12" type="radio" name="rtoggle" value="satellite" checked="checked">
+        <label for="satellite-streets-v12">satellite</label>
+
+        <input id="streets-v12" type="radio" name="rtoggle" value="streets">
+        <label for="streets-v12">streets</label>
+
+        <input id="outdoors-v12" type="radio" name="rtoggle" value="outdoors">
+        <label for="outdoors-v12">outdoors</label>
+
+        <input id="treasure" type="radio" name="rtoggle" value="outdoors">
+        <label for="treasure">treasure</label>
+        </div>
+    <div id="btn">
+        <button id="fly"> Fly to </button>
+        <button id="reset"> Reset </button>            
+    </div>
+    <div id="map"></div>
+    <br>
+    <div class="img_div">
+        <a href="/01.html" target="_self">
+          <img src="/0911rsc/map.webp" class="img_style">  
+        </a>
+        
+        <a href="/02.html">
+            <img src="/0911rsc/DJI_0013.gif" class="img_style">            
+        </a>
+
+        <a href="/03.html">
+            <img src="/0911rsc/snow.jpg" class="img_style">            
+        </a>
+        <br>
+        <a href="/04.html">
+            <img src="/0911rsc/05.jpg" class="img_style">            
+        </a>        
+        <a href="/05.html">
+            <img src="/0911rsc/chang.jpg" class="img_style">            
+        </a>        
+        <a href="/06.html">
+            <img src="/0911rsc/18down.jpg" class="img_style">            
+        </a>        
+    </div>
+    <div class="text">
+        <p>
+            <font face="楷体" size="4">
+                <p>
+                    &nbsp&nbsp&nbsp&nbsp辛集市,
+                    地处 N 37°38'~38°08'; E 115°07'~115°28'之间,位于河北省中南部,
+                    西距石家庄市65公里,东距衡水市45公里;
+                </p>
+                <p>
+                    &nbsp&nbsp&nbsp&nbsp
+                    1986年3月国务院批准改为辛集市(原为束鹿县)。2022年辛集市面积951平方千米,
+                    全市常住总人口59.08万人;截至2022年10月,辛集市辖8镇7乡,共344个行政村,
+                    24个社区。  截至2022年末,辛集常住人口为59.08万人。
+                </p>
+                <p>
+                    &nbsp&nbsp&nbsp&nbsp
+                    2022年,辛集市生产总值实现431.3亿元。其中,第一产业增加值56.5亿元,增长3.4%;
+                    第二产业增加值254.8亿元;第三产业增加值120.0亿元。
+                    三次产业比例为13.1:59.1:27.8,全年人均生产总值72744元。
+                </p>
+            </font>
+        </p>
+        </div>
+    
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoieW91bmdtYXBwZXI2IiwiYSI6ImNsazU3ZG9wYTBtYzEzbHMxNG1qbXp3amgifQ.g4S6_RMZeGK1OOhct6KiYQ';
+    
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/satellite-streets-v12',
+            center: [0, 0],
+            zoom: 1,
+            pitch: 0,
+            projection: 'globe'
+        });
+
+        map.on('style.load', () => {
+            map.setFog({
+                color: 'rgb(186, 210, 235)', 
+                'high-color': 'rgb(36, 92, 223)', 
+                'horizon-blend': 0.02,
+                'space-color': 'rgb(11, 11, 25)', 
+                'star-intensity': 0.6 
+            });
+
+            map.addSource('mapbox-dem', {
+                'type': 'raster-dem',
+                'url': 'mapbox://mapbox.terrain-rgb'
+            });
+
+            map.setTerrain({
+                'source': 'mapbox-dem',
+                'exaggeration': 1.5
+            });
+        });
+
+        document.getElementById('fly').addEventListener('click', () => {
+            map.flyTo({
+                center: [115.20626, 37.94079],
+                zoom: 12.5,
+                duration: 12000, 
+                essential: true 
+            });
+        });
+        document.getElementById('reset').addEventListener('click', () => {
+            map.flyTo({
+                zoom: 1,
+                center: [0, 0],
+                essential: true,
+                duration: 12000,
+                pitch: 0,
+                bearing: 0
+            });
+        });
+
+        const layerList = document.getElementById('menu');
+        const inputs = layerList.getElementsByTagName('input');
+        
+        for (const input of inputs) {
+            input.onclick = (layer) => {
+                const layerId = layer.target.id;
+                if(layer.target.id === 'treasure') {
+                    map.setStyle('mapbox://styles/youngmapper6/clleiqok600hc01rd6ho03a6p');                
+                } else {
+                    map.setStyle('mapbox://styles/mapbox/' + layerId);                
+                };
+            };
+        }
+
+        const secondsPerRevolution = 120;
+        const maxSpinZoom = 5;
+        const slowSpinZoom = 3;
+
+        let userInteracting = false;
+        let spinEnabled = true;
+
+        function spinGlobe() {
+            const zoom = map.getZoom();
+            if (spinEnabled && !userInteracting && zoom < maxSpinZoom) {
+                let distancePerSecond = 360 / secondsPerRevolution;
+                if (zoom > slowSpinZoom) {
+                    const zoomDif =
+                    (maxSpinZoom - zoom) / (maxSpinZoom - slowSpinZoom);
+                    distancePerSecond *= zoomDif;
+                }
+                const center = map.getCenter();
+                center.lng -= distancePerSecond;
+                map.easeTo({ center, duration: 1000, easing: (n) => n });
+            }
+        }
+
+        map.on('mousedown', () => {
+            userInteracting = true;
+        });
+
+        map.on('mouseup', () => {
+            userInteracting = false;
+            spinGlobe();
+        });
+
+        map.on('dragend', () => {
+            userInteracting = false;
+            spinGlobe();
+        });
+        map.on('pitchend', () => {
+            userInteracting = false;
+            spinGlobe();
+        });
+        map.on('rotateend', () => {
+            userInteracting = false;
+            spinGlobe();
+        });
+
+        map.on('moveend', () => {
+            spinGlobe();
+        });
+
+        spinGlobe();
+
+        map.on('click', function(e) {
+        map.flyTo({
+            center: [e.lngLat.lng, e.lngLat.lat],
+            zoom: 11, 
+            // pitch: 45,
+            bearing: 0, 
+            duration: 2000,
+            essential: true, 
+            });
+        });
+
+        let item = [0, 1, 2];
+        let i = item[0];
+        document.body.onkeydown = function(e) {
+            let key = e.keyCode;
+            let title = document.getElementById('title');
+            let message = document.getElementById('message');
+            let address = document.getElementById('address');
+
+            if (key == 13) {
+                switch(i) {
+                    case 0:
+                        title.style.display = 'none';
+                        message.style.display = 'block';
+                        i = item[1];
+                        break;
+                    case 1:
+                        message.style.display = 'none';
+                        address.style.display = 'block';
+                        i = item[2];
+                        break;
+                    case 2:
+                        address.style.display = 'none';
+                        title.style.display = 'block';
+                        i = item[0];
+                        break;
+                }
+            }
+        };
+    </script>
+</body>
+</html>

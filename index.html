@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        background-image: radial-gradient(at top left,#98878f, #494e68 );
+        width: 100%;
+        height: 100%;
+    }
+    .title {
+        position: relative;
+        left: 10px;
+        top: 10px;
+        background-color: #985e6d;
+        width: 400px;
+        height: 400px;
+        border-radius: 30px;
+    }
+    .behind {
+        background-color: #192231;
+        width: 500px;
+        height: 520px;
+        position: relative;
+        left: 50px;
+        top: 10px;
+        border-radius: 30px;
+    }
+    .link {
+          position: absolute;
+          top: 40%;
+          left: 25%;
+          transform: translateX(-50%);
+          transform: t;
+          text-decoration: none;
+          color: #000;
+    }
+    p.header {
+        font-family: Georgia, 'Times New Roman', Times, sans-serif;
+        font-size: 60px;
+        font-style: italic;
+    }
+    p.footer{
+        font-style: italic;
+        font-size: 25px;
+    }
+    p {
+        color:  #ded7da;
+    }
+    .slider {
+        position: fixed;
+        right: 50px;
+        bottom: 90px;
+        width: 800px;
+        height: 400px;
+        margin: 0 auto;
+        background-color: #f0f0f0;
+        border-radius: 40px;
+    }
+    .slider img {
+        width: 800px;
+        height: 400px;
+        position: absolute;
+        border-radius: 30px;
+    }
+    .slider button {
+        width: 30px;
+        height: 30px;
+        border: none;
+        border-radius: 50%;
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+    }
+    .slider button:hover {
+        cursor: pointer;
+    }
+
+    .slider .prev {
+    position: absolute;
+    top: 50%;
+    left: -25px;
+    }
+
+    .slider .next {
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    }
+
+    .slider .dots {
+    position: absolute;
+    bottom: -25px;
+    left: calc(50% - (25px * (5 /2)));
+    }
+
+    .slider .dots span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+    }
+
+    .slider .dots span.active {
+        background-color: rgb(188, 159, 159); 
+        size: 1px;
+    }
+
+    .slider img, .slider p {
+        opacity:0; 
+        transition-property: opacity; 
+        transition-duration:1s; 
+    }
+
+    .slider img.active, .slider p.active {
+        opacity:1; 
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    #fade-in {
+        animation: fadeIn;
+        animation-duration: 2s;
+    }
+    @keyframes slideIn {
+        from {
+            transform: translate(-100%, -100%);
+            opacity: 0;
+        }
+        to {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+    }
+    #slide-in {
+        animation: slideIn;
+        animation-duration: 2s;
+    }
+
+</style>
+<body>
+    <div class="behind">
+        <div class="title" id="fade-in">
+        <p class="header">
+            Welcom to
+        </p>
+        <p class="header">
+            <font face="隶书">
+            河北——辛集
+            </font>
+        </p>
+    </div>
+    <a class="link" href="/main.html" id="fade-in">
+        <p class="footer"><b>Get started ! -></b></p>
+    </a>
+    </div>
+    
+    <div class="slider" id="slide-in">
+        <img src="/0911rsc/11.gif" alt="Image1" class="active">
+        <img src="/0911rsc/09.gif" alt="Image2">
+        <img src="/0911rsc/06.gif" alt="Image3">
+        <img src="/0911rsc/05.jpg" alt="Image4">
+        <img src="/0911rsc/02.jpg" alt="Image5">
+        <img src="/0911rsc/01.jpg" alt="Image5">
+        <button class="prev"><</button>
+        <button class="next">></button>
+    </div>
+
+    <script>
+        var images = document.querySelectorAll(".slider img");
+        var prev = document.querySelector(".slider .prev");
+        var next = document.querySelector(".slider .next");
+
+        var index = 0;
+
+        var timer;
+
+        function switchImage() {
+            for (var i = 0; i < images.length; i++) {
+                images[i].className = "";
+            }
+            images[index].className = "active";
+        }
+
+        function autoPlay() {
+            timer = setInterval(function () {
+                index++;
+                if (index >= images.length) {
+                    index = 0;
+                }
+                switchImage();
+            }, 3000);
+        }
+
+        autoPlay();
+
+        prev.onclick = () => {
+            index--;
+            if (index < 0) {
+                index = images.length - 1;
+            }
+            switchImage();
+        };
+
+        next.onclick = () => {
+            index++;
+            if (index >= images.length) {
+                index = 0;
+            }
+            switchImage();
+        };
+
+        var slider = document.querySelector(".slider");
+        slider.onmouseover = function () {
+            clearInterval(timer);
+        };
+        slider.onmouseout = function () {
+            autoPlay();
+        };
+    </script>
+</body>
+</html>
