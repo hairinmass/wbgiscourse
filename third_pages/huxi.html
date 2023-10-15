@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            overflow: hidden;
+        }
+        .grid-container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* text-align: center; */
+        }
+        .grid-item {
+            border: 1px solid #fff;
+            font-size: 30px;
+            color: white;
+            height: 550px;
+            width: 700px;
+            margin-left: 20px;
+            margin-right: 20px;
+            /* margin-top: 40px; */
+            border-radius: 20px;
+        }
+        img:hover {
+            transform: scale(1.07);
+            transition: transform 0.4s ease;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translate(-100%, -100%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+        }
+        #slide-in {
+            animation: slideIn;
+            animation-duration: 1.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container" id="slide-in">
+        <img src="../0911rsc/18down.jpg" alt="Photo 1" class="grid-item">
+        <img src="../0911rsc/18night.jpg" alt="Photo 1" class="grid-item">
+    </div>
+</body>
+</html>

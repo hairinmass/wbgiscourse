@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        display: grid;
+        grid-template-areas: 
+        "img text";
+        background-color: black;
+    }
+    #imgDiv {
+        grid-area: img;
+        width: 53vw;
+        height: 90vh;
+        top: 5vh;
+    }
+    .text {
+        grid-area: text;
+        height: 85vh;
+        width: 38vw;
+        border: 1px solid white;
+        overflow: hidden;
+        padding: 2vw;
+        border-radius: 20px;
+        background: url('../0911rsc/paper.jpg');
+        background-size: cover;
+        box-shadow: 1vw 1vw 3vw rgb(94, 94, 94);
+    }
+    .text span {
+        color: black;
+        opacity: 0;
+        font-size: 1.4vw;
+        line-height: 2.5vw;
+        font-family: "楷体", "楷体_GB2312";
+        margin-right: 3px;
+    }
+    img {
+        width: 80%;
+        height: 100%;
+        border-radius: 20px;
+        margin-top: 20px;
+        margin-left: 80px;
+    }
+</style>
+<body>
+    <div id="imgDiv">
+        <img src="../0911rsc/yiji.jpg" alt="">
+    </div>
+    <div class="text"></div>
+
+    <script>
+        let str = `             素有“河北一集”美誉的辛集市,皮毛业历史悠久,生意遍及大江南北,至清朝中叶已经发展成为全国的皮毛贸易中心。
+                据明清两代的《保定郡志》、《保定府志》和清代《束鹿县志》记载,辛集皮革的发祥地是明代中叶的木丘村,后转移到辛集。据《束鹿县志》讲：“辛集一区,工厂如林,皮毛各行,每厂不下数十人,远近诸村,多依此为生活。”辛集素以经商传统,尤其皮毛二行,行销大江南北,最远可达数千里,尤其是明清时期的束鹿毛、皮、毡还作为贡品和税赋上解京城。从晚清到1937年是辛集皮毛业的高速发展期,各种原料充足,行业门类完备,产品种类齐全,不但有皮店、毛店、毡局,也有白皮、裘皮、鞭皮、毡毯等作坊,真可谓琳琅满目,应有尽有。
+                “绵亘五六里,货广人稠,坐贾行商,往来如织,虽居偏壤,不减通都”。`
+        let text = document.querySelector('.text')
+        let words = str.split("")
+
+        let write = () => {
+            if(words.length > 0) {
+                let span = document.createElement('span')
+                let del = words.shift()
+                let opc = 0
+                span.innerText = del
+                text.appendChild(span)
+                let fade = setInterval(() => {
+                    opc++
+                    span.style.opacity = opc / 10
+                    span.style.color = 'transparent'
+                    span.style.textShadow = '0 0 5px #57606f, 0 0 10px #57606f, 0 0 4px #57606f, 0 0 12px #ffa502'
+                    span.style.filter = `blur(${(10 / opc-1)})`
+                    if(opc >= 10) {
+                        clearInterval(fade)
+                        span.style.color = '#2f3542'
+                    }
+                }, 50)
+            }
+        }
+        setInterval(write, 50)
+    </script>
+</body>
+</html>
