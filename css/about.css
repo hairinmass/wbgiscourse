@@ -1,0 +1,83 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    display: grid;
+    grid-template-areas: 
+    "header header"
+    "nav text";
+    grid-template-columns: 170px 3fr 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    /* align-items: center; */
+    background-color: black;
+    padding: 20px;
+}
+.header {
+    grid-area: header;
+    height: 10vh;
+    text-align: center;
+    font-family: "隶书", "LiSu";
+    color: white;
+    font-size: 40px;
+    /* background-color: white; */
+}
+.shell {
+    width: 80px;
+    height: 620px;
+    left: 10px;
+    grid-area: nav;
+    background-color: #fff;
+    border-radius: 15px;
+    transition: .3s;
+    overflow: hidden;
+}
+.box {
+    display: block;
+    height: 18%;
+    width: 85%;
+    margin: 9px;
+    border-radius: 10px;
+    position: relative;
+    transition: .3s;
+    color: black;
+}
+.box span {
+    position: relative;
+    top: 22px;
+    left: 15px;
+    font: 500 23px '';
+    opacity: 0;
+    transition: .1s;
+    font-family: "楷体", "楷体_GB2312";
+}
+.shell:hover {
+    width: 150px;
+}
+.shell:hover span {
+    opacity: 1;
+}
+.box:hover {
+    background-color: rgb(188, 184, 184);
+}
+.text {
+    grid-area: text;
+    height: 78vh;
+    width: 80vw;
+    border: 1px solid white;
+    overflow: hidden;
+    padding: 2vw;
+    border-radius: 20px;
+    background: url('../0911rsc/paper.jpg');
+    background-size: 100%;
+    box-shadow: 1vw 1vw 3vw rgb(94, 94, 94);
+}
+.text span {
+    color: black;
+    opacity: 0;
+    font-size: 1.5vw;
+    line-height: 2.5vw;
+    font-family: "楷体", "楷体_GB2312";
+    margin-right: 3px;
+}

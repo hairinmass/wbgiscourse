@@ -5,9 +5,9 @@
 body {
     display: grid;
     grid-template-areas: 
-    "header header header "
-    "nav holder text"
-    "nav map text";
+    "header header header header header header"
+    "nav res weares cs navbtn mea"
+    "nav map map map map map";
     grid-template-columns: 170px 3fr 1fr;
     grid-template-rows: auto 1fr;
     height: 100vh;
@@ -15,22 +15,10 @@ body {
     background-color: black;
     padding: 20px;
 }
-.holder {
-    grid-area: holder;
-    display: flex;
-    flex-direction: row;
-    background-color: white;
-    width: 650px;
-    height: 30px;
-    border-radius: 10px;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-}
 .header {
     grid-area: header;
     height: 10vh;
+    width: 90vw;
     text-align: center;
     font-family: "隶书", "LiSu";
     color: white;
@@ -39,29 +27,14 @@ body {
 }
 #map {
     grid-area: map;
-    height: 600px;
-    width: 650px;
-    border-radius: 30px;
-}
-.text {
-    grid-area: text;
-    height: 550px;
-    width: 500px;
+    height: 74vh;
+    width: 82vw;
     border: 1px solid white;
     overflow: hidden;
     padding: 2vw;
     border-radius: 20px;
-    background: url('../0911rsc/paper.jpg');
     background-size: cover;
     box-shadow: 1vw 1vw 3vw rgb(94, 94, 94);
-}
-.text span {
-    color: black;
-    opacity: 0;
-    font-size: 1.3vw;
-    line-height: 2.5vw;
-    font-family: "楷体", "楷体_GB2312";
-    margin-right: 3px;
 }
 .shell {
     width: 80px;
@@ -111,52 +84,91 @@ body {
 .box:hover {
     background-color: rgb(188, 184, 184);
 }
-#menu {
-    height: 20px;
-    width: 420px;
-    grid-area: menu;
+.marker {
+    display: block;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    background-size: 100%;
+}
+#res {
+    grid-area: res;
+    top: 10px;
+    /* margin-left: 200px; */
+    padding: 4px 4px;
+    width: 600px;
+    height: 30px;
+    line-height: 35px;
+    background: #fff;
+    box-shadow: 0 2px 6px 0 rgba(27, 142, 236, 0.5);
+    border-radius: 7px;
+    z-index: 99;
+    padding: 5px;
     display: flex;
     flex-direction: row;
-    background-color: white;
-    /* margin: 5px; */
-    margin: 0;
-    padding: 0;
-}
-#menu label, input {
-    margin-left: 10px;
-    font-family: 'Times New Roman';
+    font-family: '楷体';
     font-size: 17px;
 }
-#btn {
-    height: 20px;
-    width: 100px;
-    grid-area: btn;
-    /* display: flex;
-    flex-direction: row; */
-    background-color: white;
-    float: right;
-    margin-left: 100px;
-    padding: 0;
+#wea_res {
+    grid-area: weares;
+    top: 10px;
+    /* margin-left: 200px; */
+    padding: 4px 4px;
+    width: 200px;
+    height: 30px;
+    line-height: 35px;
+    background: #fff;
+    box-shadow: 0 2px 6px 0 rgba(27, 142, 236, 0.5);
+    border-radius: 7px;
+    z-index: 99;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    font-family: '楷体';
+    font-size: 17px;
 }
-#fly {
-    height: 20px;
-    width: 45px;
-    font-family: 'Times New Roman';
-    font-size: 15px;
+#cs {
+    grid-area: cs;
+    height: 40px;
+    width: 80px;
+    font-family: '楷体';
+    font-size: 17px;
     background-color: white;
     border-radius: 8px;
+    margin-left: 20px;
+    /* margin-right: 10px; */
 }
-#reset {
-    height: 20px;
-    width: 45px;
-    font-family: 'Times New Roman';
-    font-size: 15px;
-    background-color: white;
-    border-radius: 8px;
-}
-#fly:hover {
+#cs:hover {
     background-color: #8d8989;
 }
-#reset:hover {
+#nav {
+    grid-area: navbtn;
+    height: 40px;
+    width: 80px;
+    font-family: '楷体';
+    font-size: 17px;
+    background-color: white;
+    border-radius: 8px;
+    margin-left: 20px;
+    /* margin-right: 10px; */
+}
+#nav:hover {
+    background-color: #8d8989;
+}
+#mea {
+    grid-area: mea;
+    height: 40px;
+    width: 80px;
+    font-family: '楷体';
+    font-size: 17px;
+    background-color: white;
+    border-radius: 8px;
+    margin-left: 20px;
+    /* margin-right: 10px; */
+}
+#mea:hover {
     background-color: #8d8989;
 }

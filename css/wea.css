@@ -1,0 +1,205 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "holder";
+    /* grid-template-columns: 170px 3fr 1fr;
+    grid-template-rows: auto 1fr; */
+    height: 100vh;
+    background-color: black;
+    padding: 20px;
+    font-family: 'Playfair Display', serif;
+}
+.holder {
+    grid-area: holder;
+    display: flex;
+    justify-content: space-evenly;
+}
+.header {
+    grid-area: header;
+    height: 10vh;
+    text-align: center;
+    font-family: "隶书", "LiSu";
+    color: white;
+    font-size: 40px;
+    /* background-color: white; */
+}
+.shell {
+    width: 80px;
+    height: 620px;
+    left: 10px;
+    /* grid-area: nav; */
+    background-color: #fff;
+    border-radius: 15px;
+    transition: .3s;
+    overflow: hidden;
+}
+.shellWea {
+    width: 80px;
+    height: 400px;
+    left: 10px;
+    /* grid-area: nav; */
+    background-color: #fff;
+    border-radius: 15px;
+    transition: .3s;
+    overflow: hidden;
+    margin-top: 100px;
+}
+.box {
+    display: block;
+    height: 18%;
+    width: 85%;
+    margin: 9px;
+    border-radius: 10px;
+    position: relative;
+    transition: .3s;
+    color: black;
+}
+.boxA {
+    display: block;
+    height: 15%;
+    width: 85%;
+    margin: 9px;
+    border-radius: 10px;
+    position: relative;
+    transition: .3s;
+    color: black;
+}
+.shellWea .boxA {
+    display: block;
+    height: 20%;
+    width: 85%;
+    margin: 9px;
+    border-radius: 10px;
+    position: relative;
+    transition: .3s;
+    color: black;
+}
+/* .box:nth-child(1)::before,
+.box:nth-child(5)::before {
+    content: '';
+    display: block;
+    height: 2px;
+    background-color: blue;
+    position: absolute;
+    bottom: -10px;
+} */
+.box span {
+    position: relative;
+    top: 22px;
+    left: 15px;
+    font: 500 23px '';
+    opacity: 0;
+    transition: .1s;
+    font-family: "楷体", "楷体_GB2312";
+}
+.boxA span {
+    position: relative;
+    top: 22px;
+    left: 15px;
+    font: 500 23px '';
+    opacity: 0;
+    transition: .1s;
+    font-family: "楷体", "楷体_GB2312";
+}
+.shell:hover {
+    width: 150px;
+}
+.shell:hover span {
+    opacity: 1;
+}
+.shellWea:hover {
+    width: 150px;
+}
+.shellWea:hover span {
+    opacity: 1;
+}
+.box:hover {
+    background-color: rgb(188, 184, 184);
+}
+.boxA:hover {
+    background-color: rgb(188, 184, 184);
+}
+#text {
+    grid-area: text;
+    height: 580px;
+    width: 700px;
+    border: 1px solid white;
+    overflow: auto;
+    padding: 2vw;
+    border-radius: 20px;
+    background: url('../0911rsc/bgi.jpg');
+    background-size: contain;
+    box-shadow: 1vw 1vw 3vw black;
+    color: black;
+    font-size: 20px;
+}
+#now {
+    height: 350px;
+    width: 190px;
+    margin-left: 25px;
+    margin-top: 100px;
+    background-color: white;
+    border-radius: 20px;
+    /* align-items: center; */
+    /* justify-content: center; */
+    text-align: center;
+    display: block;
+}
+#today {
+    height: 450px;
+    width: 220px;
+    margin-left: 25px;
+    margin-top: 50px;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+}
+#tom {
+    height: 450px;
+    width: 220px;
+    margin-left: 25px;
+    margin-top: 50px;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+}
+#after {
+    height: 450px;
+    width: 220px;
+    margin-left: 25px;
+    margin-top: 50px;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+}
+#icon {
+    height: 30px;
+    width: 30px;
+    right: 5px;
+}
+.fu_icon {
+    height: 30px;
+    width: 30px;
+}
+.temp {
+    margin-top: 10px;
+    height: 80px;
+    /* width: 100px; */
+    font-size: 60px;
+}
+.fu_temp {
+    font-size: 42px;
+}
+.content {
+    display: none;
+    /* transition: opacity 0.5s ease-in-out;
+    opacity: 0; */
+}
+/* .active {
+    display: block;
+} */

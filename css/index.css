@@ -23,8 +23,8 @@ body {
 }
 .link {
       position: absolute;
-      top: 40%;
-      left: 25%;
+      top: 47%;
+      left: 30%;
       transform: translateX(-50%);
       transform: t;
       text-decoration: none;
@@ -38,6 +38,7 @@ p.header {
 p.footer{
     font-style: italic;
     font-size: 25px;
+    font-style: italic;
 }
 p {
     color:  #ded7da;
